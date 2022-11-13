@@ -54,7 +54,14 @@ module.exports = {
       },
     ],
   },
-  resolve: { extensions: ["*", ".js", ".jsx"] },
+  resolve: {
+    alias: {
+      '@components': path.resolve(__dirname, 'src/components/'),
+      '@assets': path.resolve(__dirname, 'src/assets/'),
+      '@utils': path.resolve(__dirname, 'src/utils/'),
+    },
+    extensions: ["*", ".js", ".jsx"],
+  },
   devServer: {
     historyApiFallback: true,
     port: 3000,

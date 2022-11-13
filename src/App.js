@@ -1,8 +1,11 @@
+import Header from './Header';
+
 const App = () => {
   return (
-    <div>
+    <>
+      <Header />
       <p>Hello</p>
-    </div>
+    </>
   )
 }
 
