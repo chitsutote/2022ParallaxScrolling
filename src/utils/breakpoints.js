@@ -1,3 +1,5 @@
+import { useMediaQuery } from 'react-responsive';
+
 export const breakpoints = {
   sm: { min: 576, max: 991.98, query: '(min-width: 576px)' },
   md: { min: 992, max: 1599.98, query: '(min-width: 992px)' },
@@ -5,3 +7,5 @@ export const breakpoints = {
 }
 
 export const breakpointUp = (width) => `screen and (min-width: ${breakpoints[width].min}px)`
+
+export const useIsMobile = () => useMediaQuery({ maxWidth: breakpoints.sm.max })
