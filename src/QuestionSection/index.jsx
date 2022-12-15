@@ -53,7 +53,6 @@ const WomanImg = styled.img`
 `
 
 const QuestionSection = () => {
-  const isMobile = useIsMobile()
 
   return (
     <Wrapper>

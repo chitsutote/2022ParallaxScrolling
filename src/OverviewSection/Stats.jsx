@@ -2,9 +2,6 @@ import { styled } from '@linaria/react';
 import { breakpointUp } from '@utils/breakpoints';
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
   p {
     margin: 0;
   }
@@ -13,17 +10,21 @@ const Wrapper = styled.div`
 const Number = styled.p`
   margin: 0;
   color: #83FF18;
-  font-size: 60px;
+  font-size: 48px;
   font-weight: 500;
+
+  @media ${breakpointUp('lg')} {
+    font-size: 60px;
+  }
 `
 
 const Name = styled.p`
   font-size: 16px;
   color: #FFFFFFB3;
-  align-self: center;
+  text-align: center;
 
   @media ${breakpointUp('sm')} {
-    align-self: start;
+    text-align: left;
   }
 `
 

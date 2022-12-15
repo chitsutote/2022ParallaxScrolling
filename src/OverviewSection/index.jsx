@@ -1,8 +1,5 @@
 import { styled } from '@linaria/react';
-import {
-  breakpointUp,
-  useIsMobile,
-} from '@utils/breakpoints';
+import { breakpointUp } from '@utils/breakpoints';
 import Banner from '@assets/banner.png';
 import MobileBanner from '@assets/mobile-banner.png';
 import Stats from './Stats';
@@ -10,10 +7,6 @@ import Stats from './Stats';
 const Wrapper = styled.div`
   position: relative;
   background-color: #021B3B;
-`
-
-const BannerImg = styled.img`
-  width: 100%;
 `
 
 const StatsWrapper = styled.div`
@@ -32,11 +25,13 @@ const StatsWrapper = styled.div`
 `
 
 const OverviewSection = () => {
-  const isMobile = useIsMobile()
 
   return (
     <Wrapper>
-      <BannerImg src={isMobile? MobileBanner : Banner} alt="banner" />
+      <picture>
+        <source srcset={Banner} media="(min-width: 576px)" /> 
+        <img src={MobileBanner} alt="" style={{ width: '100%' }}/>
+      </picture>
       <StatsWrapper>
         <Stats
           name="總報名人數"
