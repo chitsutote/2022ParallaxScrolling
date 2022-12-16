@@ -8,14 +8,10 @@ import {
 } from '@utils/breakpoints';
 
 const Wrapper = styled.div`
-  height: 100vh;
+  height: 100%;
   position: relative;
   background-color: #021B3B;
   padding: 20px 0;
-
-  @media ${breakpointUp('sm')} {
-    height: auto;
-  }
 `
 
 const QuestionBackgroundImg = styled.img`
@@ -49,6 +45,17 @@ const WomanImg = styled.img`
     left: 40%;
     bottom: 0;
     height: 280px;
+  }
+`
+
+const AnchorWrapper = styled.div`
+  margin: 40px 0;
+
+  @media ${breakpointUp('sm')} {
+    margin: 0;
+    position: absolute;
+    top: ${props => props.top};
+    left: ${props => props.left};
   }
 `
 
@@ -86,21 +93,21 @@ const QuestionSection = () => {
       />
       <WomanImg src={Woman} />
       <div style={{ textAlign: 'center' }}>
-        <div style={isMobile ? {} : { position: 'absolute', top: '110px', left: '800px'}}>
+        <AnchorWrapper top="110px" left="55%">
           <DialogBox>
             <QuestionText>動畫技能樹太雜無從下手?</QuestionText>
           </DialogBox>
-        </div>
-        <div style={isMobile ? {} : { position: 'absolute', top: '220px', left: '300px'}}>
+        </AnchorWrapper>
+        <AnchorWrapper top="220px" left="300px">
           <DialogBox>
             <QuestionText>滿足不了同事的許願?</QuestionText>
           </DialogBox>
-        </div>
-        <div style={isMobile ? {} : { position: 'absolute', top: '315px', left: '500px'}}>
+        </AnchorWrapper>
+        <AnchorWrapper top="315px" left="500px">
           <DialogBox>
             <QuestionText>羨慕別人的酷酷網頁動畫?</QuestionText>
           </DialogBox>
-        </div>
+        </AnchorWrapper>
       </div>
     </Wrapper>
   )

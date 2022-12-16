@@ -29,7 +29,7 @@ const OverviewSection = () => {
   return (
     <Wrapper>
       <picture>
-        <source srcset={Banner} media="(min-width: 576px)" /> 
+        <source srcSet={Banner} media="(min-width: 576px)" /> 
         <img src={MobileBanner} alt="" style={{ width: '100%' }}/>
       </picture>
       <StatsWrapper>
