@@ -7,12 +7,12 @@ const Wrapper = styled.div`
   background-color: #021B3B;
   justify-content: center;
   align-items: center;
-  padding: 50px 20px;
+  padding: 24px 30px;
 
   @media ${breakpointUp('sm')} {
     flex-direction: row;
     justify-content: space-between;
-    padding: 30px 200px;
+    padding: 24px 200px;
   }
 `
 
