@@ -6,7 +6,7 @@ import QuestionBackground from '@assets/question-background.png'
 import Woman from '@assets/woman.png';
 import {
   breakpointUp,
-  useIsMobile,
+  useIsDesktop,
 } from '@utils/breakpoints';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -67,57 +67,41 @@ const AnchorWrapper = styled.div`
 const QuestionSection = () => {
   const gsapContextRef = useRef(null)
   const wrapperRef = useRef(null)
-  const isMobile = useIsMobile();
+  const isDesktop = useIsDesktop();
 
   useLayoutEffect(() => {
-    gsapContextRef.current = gsap.context(() => {
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: wrapperRef.current,
-          pin: true,
-          start: "top 0%",
-          end: "top -95%",
-          scrub: true,
-        },
-      })
-
-      const backgroundImgAnimate = (element, index) => {
-        const offsetArray = [
-          "translateX(6%)",
-          "translateX(-10%)",
-          "translateX(15%)",
-          "translateX(-10%)",
-        ]
-        timeline.to(element, {
-          transform: offsetArray[index],
-          xPercent: '-50',
-          opacity: 1,
-          duration: 5,
-        }, "backgroundGroup")
-      }
-
-      gsap.utils.toArray('.question-background').forEach((element, index) => {
-        backgroundImgAnimate(element, index)
-      })
-
-      // NOTE: dialog animation
-      if (isMobile) {
-        timeline.to('.first-dialog', {
-          opacity: 1,
-          ease: 'SlowMo',
-          duration: 1,
+    if (isDesktop) {
+      gsapContextRef.current = gsap.context(() => {
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: wrapperRef.current,
+            pin: true,
+            start: "top 0%",
+            end: "top -95%",
+            scrub: true,
+          },
         })
-        timeline.to('.second-dialog', {
-          opacity: 1,
-          ease: 'SlowMo',
-          duration: 1,
+  
+        const backgroundImgAnimate = (element, index) => {
+          const offsetArray = [
+            "translateX(6%)",
+            "translateX(-10%)",
+            "translateX(15%)",
+            "translateX(-10%)",
+          ]
+          timeline.to(element, {
+            transform: offsetArray[index],
+            xPercent: '-50',
+            opacity: 1,
+            duration: 5,
+          }, "backgroundGroup")
+        }
+  
+        gsap.utils.toArray('.question-background').forEach((element, index) => {
+          backgroundImgAnimate(element, index)
         })
-        timeline.to('.third-dialog', {
-          opacity: 1,
-          ease: 'back',
-          duration: 1,
-        })
-      } else {
+  
+        // NOTE: dialog animation
         timeline.to('.third-dialog', {
           opacity: 1,
           ease: 'back',
@@ -149,12 +133,10 @@ const QuestionSection = () => {
           duration: 8,
           delay: 2,
         })
-      }
-
-      
-    }, wrapperRef.current)
-
-    return () => gsapContextRef.current.revert();
+      }, wrapperRef.current)
+  
+      return () => gsapContextRef.current.revert();
+    }
   }, [])
 
   return (

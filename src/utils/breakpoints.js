@@ -9,3 +9,4 @@ export const breakpoints = {
 export const breakpointUp = (width) => `screen and (min-width: ${breakpoints[width].min}px)`
 
 export const useIsMobile = () => useMediaQuery({ maxWidth: breakpoints.sm.max })
+export const useIsDesktop = () => useMediaQuery({ minWidth: breakpoints.md.min })
